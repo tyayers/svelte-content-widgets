@@ -35,16 +35,31 @@
 </script>
 
 <script lang="ts">
+  import { onMount } from "svelte";
+  
   import logo from './assets/svelte.png'
   import Counter from './lib/Counter.svelte'
 	import SearchBoxTest from './lib/Search.box.test.svelte'
   import HeaderTest from './lib/Header.test.svelte'
   import PostCardTest from './lib/Post.card.test.svelte'
+  import PostsView from './lib/Posts.view.svelte'
+
+  import { LoadPosts } from './lib/DataService'
+  import type {PostOverviewCollection, PostOverview} from './DataInterface'
+
+  let allPosts: PostOverviewCollection = undefined;
+  
+  onMount(async function () {
+  	LoadPosts().then((posts) => {
+      console.log("got posts " + Object.values(posts).length)
+      allPosts = posts;
+    })
+  });
 </script>
 
 <main>
   <HeaderTest />
-  <PostCardTest />
+  <PostsView posts={allPosts} />
 </main>
 
 <style>

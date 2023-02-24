@@ -56,6 +56,7 @@
 
 <style>
   .pc {
+    cursor: pointer;
     display: flex;
     margin-bottom: 40px;
     margin-top: 15px;

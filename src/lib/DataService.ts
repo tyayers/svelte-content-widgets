@@ -39,30 +39,16 @@ let postData: PostOverviewCollection = {
   }  
 }
 
-let searchData: SearchResult[] = [
-  {
-    id: "1",
-    title: "I like jelly beans",
-  },
-  {
-    id: "2",
-    title: "I like trees",
-  },
-  {
-    id: "3",
-    title: "I like bicylces",
-  },
-];
-
 export function SearchPosts(input: string): Promise<SearchResult[]> {
   return new Promise((resolve, reject) => {
     let tempResults: SearchResult[] = [];
 
     if (input) {
-      for (let i = 0; i < searchData.length; i++) {
-        if (searchData[i].title.includes(input)) {
-          tempResults.push(searchData[i]);
-        }
+
+      for (const [key, value] of Object.entries(postData)) {
+        if (value && value.title.includes(input)) {
+            tempResults.push(value);
+          }
       }
     }
 
