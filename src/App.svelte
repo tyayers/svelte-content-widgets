@@ -39,10 +39,12 @@
   import Counter from './lib/Counter.svelte'
 	import SearchBoxTest from './lib/Search.box.test.svelte'
   import HeaderTest from './lib/Header.test.svelte'
+  import PostCardTest from './lib/Post.card.test.svelte'
 </script>
 
 <main>
   <HeaderTest />
+  <PostCardTest />
 </main>
 
 <style>
