@@ -24,29 +24,28 @@
   });
 </script>
 
-<div class="pc">
+<div class="container">
   {#if post}
-    <div class="pf">
-      <div class="ul">
-        <div class="ui">
+    <div class="frame">
+      <div class="user">
+        <div class="profile">
           <img
-            class="ui"
+            class="profile"
             width="24"
-            height="24"
             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
           />
         </div>
-        <div class="un">{post.author} · {(new Date(post.created)).toDateString()}</div>
+        <div class="byline">{post.author} · {(new Date(post.created)).toDateString()}</div>
       </div>
-      <div class="tl" on:click={loadPost(post.id)}>
+      <div class="content" on:click={loadPost(post.id)}>
         <!-- <Link to="/posts/{id}" -->
-        <h2 class="tll">{post.title}</h2>
+        <h2 class="title">{post.title}</h2>
         <div>
           {post.summary}
         </div>
         <!--/Link> -->
         <br />
-        <span class="tcl"
+        <span class="footer"
           >{post.commentCount} Comments - {post.upvotes} Likes - {post.fileCount} Attachments</span
         >
       </div>
@@ -55,46 +54,47 @@
 </div>
 
 <style>
-  .pc {
+  .container {
     cursor: pointer;
     display: flex;
     margin-bottom: 40px;
     margin-top: 15px;
+    padding-top: 30px;
   }
 
-  .pf {
+  .frame {
     margin: 0px 24px;
     max-width: 680px;
     width: 100%;
     height: 100%;
   }
 
-  .ul {
+  .user {
     display: flex;
   }
 
-  .ui {
+  .profile {
     height: 24px;
     width: 24px;
     border-radius: 50%;
   }
 
-  .un {
+  .byline {
     position: relative;
     top: 3px;
     left: 6px;
   }
 
-  .tl {
+  .content {
     text-align: left;
     text-decoration: none;
   }
 
-  .tll {
+  .title {
     text-decoration: none;
   }
 
-  .tcl {
+  .footer {
     color: gray;
     font-size: 12px;
   }

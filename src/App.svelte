@@ -6,6 +6,9 @@
   export const url = writable("/");
 
   let localUser: AppUser = undefined;
+  export let userSignedIn: boolean = primitiveToBoolean(
+    localStorage.getItem("UserSignedIn")
+  );
   
   export function navigate(path: string) {
     console.log("navigate: " + path)
@@ -18,20 +21,31 @@
     
     user.update((n) => localUser);
 
+    userSignedIn = true;
     localStorage.setItem("UserSignedIn", "true");
     
     navigate("/home")
   }
   
   export function signUserOut() {
+    userSignedIn = false;
     localStorage.setItem("UserSignedIn", "false");
-    localUser = undefined;
+    localUser = null;
     
     user.update((n) => localUser);
 
     navigate("/")
   }
-  
+
+  function primitiveToBoolean(
+    value: string | number | boolean | null | undefined
+  ): boolean {
+    if (typeof value === "string") {
+      return value.toLowerCase() === "true" || !!+value; // here we parse to number first
+    }
+
+    return !!value;
+  }
 </script>
 
 <script lang="ts">

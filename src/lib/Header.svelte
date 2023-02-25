@@ -17,12 +17,19 @@
 
   user.subscribe((value) => {
     localUser = value;
-    if (value) {
+    if (value != null && value != undefined) {
+      console.log("user is there");
+      // user is signed in
       userSignedIn = true;
       showSignIn = false;
-    }
-    else {
+    } else if (value === null) {
+      // user is signed out
+      console.log("no user");
       userSignedIn = false;
+      showSignIn = false;
+    } else {
+      // we don't know the user state
+      console.log("we just don't know");
       showSignIn = false;
     }
   });
@@ -33,6 +40,10 @@
 
   function signOut() {
     signUserOut();
+  }
+
+  function newPost() {
+    navigate("/new");
   }
 
   function searchClick(event) {
@@ -50,19 +61,21 @@
   }
 </script>
 
-<div class:hs={small === true} class="h">
-  <div class="hl">
+<div class:headersmall={small === true} class="header">
+  <div class="left">
     <div on:click={goHome} on:keydown={goHome}>
-      <img class="hi" src={LogoPath} alt="Site logo" />
+      <img class="logo" src={LogoPath} alt="Site logo" />
     </div>
     <SearchBox search={SearchPosts} on:click={searchClick} />
   </div>
-  <div class="hr">
+  <div class="right">
     {#if !userSignedIn}
-      <button class="sob" on:click={() => (showSignIn = true)}>Sign In</button>
+      <button class="signin" on:click={() => (showSignIn = true)}
+        >Sign In</button
+      >
     {:else}
-      <div class="wc">
-        <a class="wl" href="/new">
+      <div class="post">
+        <div class="postbutton" on:click={newPost}>
           <svg
             width="24"
             height="24"
@@ -77,10 +90,10 @@
               stroke="currentColor"
             /></svg
           >
-          <div class="wlt">Post</div>
-        </a>
+          <div class="posttext">Post</div>
+        </div>
       </div>
-      <button class="sob" on:click={signOut}>Sign Out</button>
+      <button class="signin" on:click={signOut}>Sign Out</button>
     {/if}
   </div>
 </div>
@@ -94,7 +107,7 @@
 {/if}
 
 <style>
-  .h {
+  .header {
     height: 57px;
     background-color: rgba(255, 255, 255, 1);
     /* width: 100vw; */
@@ -102,67 +115,38 @@
     padding: 0 24px;
     align-items: center;
     display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
     /* top: 16px;
     position: relative; */
   }
 
-  .hs {
+  .headersmall {
     max-width: 1050px;
     margin: auto;
     border-bottom: 0px;
   }
 
-  .hl {
+  .left {
     display: flex;
     flex: 1 0 auto;
   }
 
-  .hr {
+  .right {
     display: flex;
     position: relative;
     right: 40px;
   }
 
-  .hi {
+  .logo {
     position: relative;
     top: 10px;
     height: 44px;
     cursor: pointer;
   }
 
-  .hsc {
-    display: flex;
-    width: 240px;
-    background: rgba(250, 250, 250, 1);
-    border-radius: 20px;
-    margin: 10px 5px 10px 16px;
-  }
-
-  .hsi {
-    margin: 0px 12px 0px 12px;
-    padding: 4px 0px 0px 0px;
-    color: darkgray;
-    display: flex;
-  }
-
-  .hss {
-    position: relative;
-    top: 3px;
-  }
-
-  .hsf {
-    position: relative;
-    top: -3px;
-    padding: 10px 20px 10px 0;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    color: rgba(41, 41, 41, 1);
-    line-height: 20px;
-    font-size: 14px;
-  }
-
-  .wc {
+  .post {
     font-size: 14px;
     align-items: center;
     display: flex;
@@ -170,17 +154,19 @@
     line-height: 20px;
   }
 
-  .wl {
+  .postbutton {
     color: rgba(117, 117, 117, 1);
     display: flex;
     margin-right: 32px;
+    cursor: pointer;
+    user-select: none;
   }
 
-  .wlt {
+  .posttext {
     margin-left: 8px;
   }
 
-  .sob {
+  .signin {
     cursor: pointer;
     border-radius: 99em;
     border-width: 1px;

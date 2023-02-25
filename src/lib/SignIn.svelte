@@ -1,40 +1,12 @@
-<!-- <script lang="ts" context="module">
-  import { writable, get } from 'svelte/store';
-  import type { Auth, User } from 'firebase/auth';
-  import { getAuth } from "firebase/auth";
-
-  export const user = writable(undefined as User);
-
-  export function SetUser(newUser: User) {
-    if (newUser) {
-      localStorage.setItem('UserSignedIn', "true");
-    }
-    user.set(newUser)
-  }
-
-  export function GetUserSignedIn() : string {
-    return localStorage.getItem("UserSignedIn")
-  }
-
-</script> -->
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { signInWithGoogle } from "../App.svelte";
 
-  // import { signInWithRedirect } from "firebase/auth";
-  // import { GoogleAuthProvider } from "firebase/auth";
-
-  // const googleProvider = new GoogleAuthProvider();
   const dispatch = createEventDispatcher();
 
   function cancel() {
     dispatch("cancel", {});
   }
-
-  // function signInGoogle() {
-  //   const auth = getAuth();
-  //   signInWithRedirect(auth, googleProvider);
-  // }
 </script>
 
 <div class="sc" on:keydown={() => {}} on:click={cancel}>
@@ -80,7 +52,7 @@
     transform-origin: center bottom;
     align-items: center;
     justify-content: center;
-
+    z-index: 1000;
     /* display: flex; */
   }
 
