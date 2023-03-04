@@ -21,7 +21,7 @@
         <div>
           {#each Object.values(posts) as post}
             <div>
-              <PostCard post={post} />
+              <PostCard {post} />
             </div>
           {/each}
         </div>

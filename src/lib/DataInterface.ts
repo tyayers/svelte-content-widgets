@@ -1,13 +1,13 @@
 export type AppUser = {
-  displayName: string;
+  displayName?: string;
   email: string;
-  phoneNumber: string;
-  photoURL: string;
-  providerId: string;
-  uid: string;
-  emailVerified: boolean;
-  isAnonymous: boolean;
-  refreshToken: string;
+  phoneNumber?: string;
+  photoURL?: string;
+  providerId?: string;
+  uid?: string;
+  emailVerified?: boolean;
+  isAnonymous?: boolean;
+  refreshToken?: string;
 }
 
 export type SearchResult = {

@@ -30,14 +30,17 @@
       <div class="user">
         <div class="profile">
           <img
+            alt="user profile"
             class="profile"
             width="24"
             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
           />
         </div>
-        <div class="byline">{post.author} · {(new Date(post.created)).toDateString()}</div>
+        <div class="byline">
+          {post.author} · {new Date(post.created).toDateString()}
+        </div>
       </div>
-      <div class="content" on:click={loadPost(post.id)}>
+      <div class="content" on:click={() => loadPost(post.id)}>
         <!-- <Link to="/posts/{id}" -->
         <h2 class="title">{post.title}</h2>
         <div>
@@ -46,7 +49,8 @@
         <!--/Link> -->
         <br />
         <span class="footer"
-          >{post.commentCount} Comments - {post.upvotes} Likes - {post.fileCount} Attachments</span
+          >{post.commentCount} Comments - {post.upvotes} Likes - {post.fileCount}
+          Attachments</span
         >
       </div>
     </div>
