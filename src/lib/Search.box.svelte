@@ -1,14 +1,14 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import type { SearchResult } from './DataInterface'
-  
+  import type { SearchResult } from "./DataInterface";
+
   export let search;
-  
+
   // Event dispatcher for all broadcasts to parent
   const dispatch = createEventDispatcher();
 
   // The results that are returned by searching
-  let results: SearchBox[] = [];
+  let results: SearchResult[] = [];
 
   // The current search input text
   let searchInput: string = "";

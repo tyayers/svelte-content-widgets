@@ -58,7 +58,7 @@
   import PostCardTest from "./lib/Post.card.test.svelte";
   import PostsView from "./lib/Posts.view.svelte";
   import PostHeaderTest from "./lib/Post.header.test.svelte";
-
+  import UserMenuTest from "./lib/User.menu.test.svelte";
   import { LoadPosts } from "./lib/DataService";
   import type {
     PostOverviewCollection,
@@ -79,7 +79,9 @@
   <!-- <HeaderTest />
   <PostsView posts={allPosts} /> -->
 
-  <PostHeaderTest />
+  <HeaderTest />
+
+  <!-- <UserMenuTest /> -->
 </main>
 
 <style>

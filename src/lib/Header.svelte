@@ -6,6 +6,7 @@
 
   import SignIn from "./SignIn.svelte";
   import SearchBox from "./Search.box.svelte";
+  import UserMenu from "./User.menu.svelte";
 
   export let small = false;
 
@@ -93,7 +94,10 @@
           <div class="posttext">Post</div>
         </div>
       </div>
-      <button class="signin" on:click={signOut}>Sign Out</button>
+      <!-- <button class="signin" on:click={signOut}>Sign Out</button> -->
+      <div class="usermenu">
+        <UserMenu user={localUser} on:signOut={signOut} />
+      </div>
     {/if}
   </div>
 </div>
@@ -180,5 +184,9 @@
     font-size: 14px;
     font-weight: 400;
     min-width: 89px;
+  }
+
+  .usermenu {
+    display: flex;
   }
 </style>
