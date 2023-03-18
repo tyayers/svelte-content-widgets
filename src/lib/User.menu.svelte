@@ -43,6 +43,8 @@
 
   .menuPanel {
     position: absolute;
+    top: 45px;
+    right: -125px;
   }
 
   .menu {

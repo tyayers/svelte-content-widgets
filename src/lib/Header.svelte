@@ -17,6 +17,7 @@
   let showSignIn = false;
 
   user.subscribe((value) => {
+    console.log(value);
     localUser = value;
     if (value != null && value != undefined) {
       console.log("user is there");

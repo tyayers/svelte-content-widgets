@@ -10,13 +10,19 @@
     localStorage.getItem("UserSignedIn")
   );
 
-  export function navigate(path: string) {
+  if (userSignedIn) {
+    signInWithGoogle();
+  }
+
+  export function navigate(path: string): void {
     console.log("navigate: " + path);
   }
 
   export function signInWithGoogle() {
     localUser = {
       email: "test@test.com",
+      photoURL:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80",
     };
 
     user.update((n) => localUser);
@@ -58,6 +64,7 @@
   import PostCardTest from "./lib/Post.card.test.svelte";
   import PostsView from "./lib/Posts.view.svelte";
   import PostHeaderTest from "./lib/Post.header.test.svelte";
+  import PostFooterFest from "./lib/Post.footer.test.svelte"
   import UserMenuTest from "./lib/User.menu.test.svelte";
   import { LoadPosts } from "./lib/DataService";
   import type {
@@ -79,9 +86,7 @@
   <!-- <HeaderTest />
   <PostsView posts={allPosts} /> -->
 
-  <HeaderTest />
-
-  <!-- <UserMenuTest /> -->
+  <PostFooterFest />
 </main>
 
 <style>
