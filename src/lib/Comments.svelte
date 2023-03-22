@@ -1,5 +1,6 @@
 <script lang="ts">
-  import Comment from './Comment.svelte'
+  import { children } from 'svelte/internal';
+import Comment from './Comment.svelte'
   import type { PostComment } from './DataInterface';
 
   export let data: PostComment[] = [];
@@ -8,5 +9,18 @@
 <div>
   {#each data as comment, i}
     <Comment data={comment} />
+    {#if comment.children.length > 0}
+      {#each comment.children as child_comment1}
+        <div class="comment_level1">
+          <Comment data={child_comment1} />
+        </div>
+      {/each}
+    {/if}
   {/each}
 </div>
+
+<style>
+  .comment_level1 {
+    margin-left: 20px;
+  }
+</style>
