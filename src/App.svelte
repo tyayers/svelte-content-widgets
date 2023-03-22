@@ -86,7 +86,7 @@
 <main>
   <!-- <HeaderTest />
   <PostsView posts={allPosts} /> -->
-
+  <!-- <PostHeaderTest /> -->
   <CommentsText />
 </main>
 
