@@ -12,7 +12,7 @@ import Comment from './Comment.svelte'
     {#if comment.children.length > 0}
       {#each comment.children as child_comment1}
         <div class="comment_level1">
-          <Comment data={child_comment1} />
+          <Comment data={child_comment1} level=1 />
         </div>
       {/each}
     {/if}
@@ -21,6 +21,6 @@ import Comment from './Comment.svelte'
 
 <style>
   .comment_level1 {
-    margin-left: 20px;
+    margin-left: 0px;
   }
 </style>
