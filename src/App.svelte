@@ -64,7 +64,7 @@
   import PostCardTest from "./lib/Post.card.test.svelte";
   import PostsView from "./lib/Posts.view.svelte";
   import PostHeaderTest from "./lib/Post.header.test.svelte";
-  import PostFooterFest from "./lib/Post.footer.test.svelte"
+  import PostFooterTest from "./lib/Post.footer.test.svelte"
   import UserMenuTest from "./lib/User.menu.test.svelte";
   import CommentsText from "./lib/Comments.test.svelte";
   import { LoadPosts } from "./lib/DataService";
@@ -87,6 +87,7 @@
   <!-- <HeaderTest />
   <PostsView posts={allPosts} /> -->
   <!-- <PostHeaderTest /> -->
+  <PostFooterTest />
   <CommentsText />
 </main>
 
