@@ -68,7 +68,7 @@
   </div>
   <textarea class="content" placeholder="What are your thoughts?" rows="4" bind:value={commentText}></textarea>
   <div class="controls">
-    <button class="publishbutton" on:click={doSubmit}>Respond</button>
+    <button disabled={commentText ? false : true} class="publishbutton" on:click={doSubmit}>Respond</button>
   </div>
 </div>
 
@@ -146,5 +146,11 @@
     background: #1a8917;
     border-color: #1a8917;
     color: white;
+  }
+
+  .publishbutton:disabled {
+    background: lightgray;
+    color: gray;
+    border-color: lightgray;
   }
 </style>
