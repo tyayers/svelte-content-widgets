@@ -149,8 +149,7 @@
   }
 
   .publishbutton:disabled {
-    background: lightgray;
-    color: gray;
-    border-color: lightgray;
+    opacity: .3;
+    cursor: default;
   }
 </style>

@@ -4,7 +4,6 @@
   import { children } from "svelte/internal";
 
   export let data: PostComment = undefined;
-  export let level: number = 0;
 
   let editMode: boolean = false;
   let replyMode: boolean = false;
@@ -53,7 +52,7 @@
 </script>
 
 <div class="outer_container">
-  <div style="margin-left: {level * 20}px;">
+  <div>
     <div class="container">
       {#if data}
         <div class="frame">
@@ -119,7 +118,9 @@
     {/if}
   </div>
   {#each data.children as child_comment}
-    <svelte:self data={child_comment} />
+    <div class="child_frame">
+      <svelte:self data={child_comment} />
+    </div>
   {/each}
 </div>
 
@@ -276,6 +277,10 @@
 
   .reply_frame {
     margin-top: 12px;
+    margin-left: 20px;
+  }
+
+  .child_frame {
     margin-left: 20px;
   }
 </style>
