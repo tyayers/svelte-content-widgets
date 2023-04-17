@@ -67,6 +67,7 @@
   import PostFooterTest from "./lib/Post.footer.test.svelte"
   import UserMenuTest from "./lib/User.menu.test.svelte";
   import CommentsText from "./lib/Comments.test.svelte";
+  import PopularPostsTest from "./lib/Post.popular.test.svelte";
   import { LoadPosts } from "./lib/DataService";
   import type {
     PostOverviewCollection,
@@ -87,8 +88,11 @@
   <!-- <HeaderTest />
   <PostsView posts={allPosts} /> -->
   <!-- <PostHeaderTest /> -->
-  <PostFooterTest />
-  <CommentsText />
+
+  <PopularPostsTest />
+
+  <!-- <PostFooterTest />
+  <CommentsText /> -->
 </main>
 
 <style>
